@@ -1,16 +1,50 @@
 import assert from "assert";
 
-class Dollar {
-  times(multiplier: number): Dollar {
-    return new Dollar(this.amount * multiplier);
-  }
+class Money {
   amount: number;
-  constructor(amount: number) {
- this.amount = amount;;
+  currency: string;
+  divide(divider: number) {
+    return new Money(this.amount / divider, this.currency);
+  }
+  times(multiplier: number): Money {
+    return new Money(this.amount * multiplier, this.currency);
+  }
+  constructor(amount: number, currency: string) {
+    this.amount = amount;
+    this.currency = currency;
   }
 }
 
-const fiver = new Dollar(5);
-const tenner = fiver.times(2);
+/**
+ *
+ * Chapter 1: The money problem
+ *
+ * */
 
-assert.strictEqual(tenner.amount, 10);
+const fiveDollars = new Money(5, "USD");
+const tenDollars = new Money(10, "USD");
+
+assert.deepStrictEqual(fiveDollars.times(2), tenDollars);
+
+/**
+ *
+ * Chapter 2: Multi currency money
+ *
+ * */
+
+const fiveEuros = new Money(5, "EUR");
+const tenEuros = new Money(10, "EUR");
+
+assert.deepStrictEqual(fiveEuros.times(2), tenEuros);
+
+/**
+ *
+ * Chapter 2: Division
+ *
+ * */
+
+const originalMoney = new Money(4002, "KRW");
+const actualMoneyAfterDivision = originalMoney.divide(4);
+const expectedMoneyAfterDivision = new Money(1000.5, "KRW");
+
+assert.deepStrictEqual(actualMoneyAfterDivision, expectedMoneyAfterDivision);
