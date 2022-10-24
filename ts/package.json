@@ -4,7 +4,7 @@
   "description": "ts tdd",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:money": "ts-node src/money/money_test.ts",
     "prettier": "prettier --write .",
     "lint": "npx eslint **"
   },
