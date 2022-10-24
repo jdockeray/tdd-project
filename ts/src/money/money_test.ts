@@ -15,6 +15,23 @@ class Money {
   }
 }
 
+class Portfolio {
+  moneys: Money[];
+  evaluate(currency: string): Money {
+    let sum = 0;
+    for (const money of this.moneys) {
+      sum += money.amount;
+    }
+    return new Money(sum, currency);
+  }
+  add(...money: Money[]) {
+    this.moneys = [...this.moneys, ...money];
+  }
+  constructor() {
+    this.moneys = [];
+  }
+}
+
 /**
  *
  * Chapter 1: The money problem
@@ -48,3 +65,14 @@ const actualMoneyAfterDivision = originalMoney.divide(4);
 const expectedMoneyAfterDivision = new Money(1000.5, "KRW");
 
 assert.deepStrictEqual(actualMoneyAfterDivision, expectedMoneyAfterDivision);
+
+/**
+ *
+ * Chapter 2: Portfolio
+ *
+ * */
+
+const fifteenDollars = new Money(15, "USD");
+const portfolio = new Portfolio();
+portfolio.add(fiveDollars, tenDollars);
+assert.deepStrictEqual(portfolio.evaluate("USD"), fifteenDollars);

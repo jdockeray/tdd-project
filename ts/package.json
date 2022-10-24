@@ -6,7 +6,7 @@
   "scripts": {
     "test:money": "ts-node src/money/money_test.ts",
     "prettier": "prettier --write .",
-    "lint": "npx eslint **"
+    "lint": "eslint src/**"
   },
   "author": "",
   "license": "ISC",
