@@ -1,6 +1,8 @@
 package money
 
-import "testing"
+import (
+	"testing"
+)
 
 func assertEquals(t *testing.T, expected Money, actual Money) {
 	if expected != actual {
