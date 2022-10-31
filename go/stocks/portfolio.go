@@ -1,4 +1,4 @@
-package money
+package stocks
 
 type Portfolio []Money
 

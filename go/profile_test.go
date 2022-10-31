@@ -1,16 +1,17 @@
-package money
+package _go
 
 import (
+	s "money/stocks"
 	"testing"
 )
 
 func TestAddition(t *testing.T) {
-	var portfolio Portfolio
-	var portfolioInDollars Money
+	var portfolio s.Portfolio
+	var portfolioInDollars s.Money
 
-	fiveDollars := Money{amount: 5, currency: "USD"}
-	tenDollars := Money{amount: 10, currency: "USD"}
-	fifteenDollars := Money{amount: 15, currency: "USD"}
+	fiveDollars := s.NewMoney(5, "USD")
+	tenDollars := s.NewMoney(10, "USD")
+	fifteenDollars := s.NewMoney(15, "USD")
 
 	portfolio = portfolio.Add(fiveDollars)
 	portfolio = portfolio.Add(tenDollars)

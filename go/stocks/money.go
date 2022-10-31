@@ -1,8 +1,12 @@
-package money
+package stocks
 
 type Money struct {
 	amount   float64
 	currency string
+}
+
+func NewMoney(amount float64, currency string) Money {
+	return Money{amount, currency}
 }
 
 func (d Money) Times(multiplier int) Money {
